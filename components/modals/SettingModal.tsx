@@ -19,13 +19,13 @@ export async function SettingModal() {
   const res = await readSetting();
   let entityId: string = "";
   let entityType: string = "";
-  let keys: string = "";
-  let useStrictDataTypes: string = "";
+  // let keys: string = "";
+  // let useStrictDataTypes: string = "";
   if (res.data) {
     entityId = res.data.entityId;
     entityType = res.data.entityType;
-    keys = res.data.keys;
-    useStrictDataTypes = res.data.useStrictDataTypes;
+    // keys = res.data.keys;
+    // useStrictDataTypes = res.data.useStrictDataTypes;
   }
 
   return (
