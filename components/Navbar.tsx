@@ -33,7 +33,7 @@ const Navbar = () => {
 
             <li>
               <Link
-                href={"https://github.com/rch-goldsnaker/weather-station"}
+                href={"https://github.com/BIMERO/WeatherIot"}
                 target="_blank"
               >
                 <Button variant={"secondary"} className="gap-1">
