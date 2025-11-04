@@ -1,14 +1,23 @@
 import React from "react";
 import { TbSunset2 } from "react-icons/tb";
 import AuthForm from "@/components/forms/AuthForm";
-import { readUserSession } from "@/actions";
+// import { readUserSession } from "@/actions";
 import { redirect } from "next/navigation";
+import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export default async function page() {
-  const { data } = await readUserSession();
+  // const { data } = await readUserSession();
+  // if (data.session) {
+  //   return redirect("/");
+  // }
+
+  const supabase = await createServerSupabaseClient();
+  const { data } = await supabase.auth.getSession();
+
   if (data.session) {
-    return redirect("/");
+    redirect("/");
   }
+
   return (
     <>
       <div className="container relative  h-screen flex-col items-center justify-center grid lg:max-w-none lg:grid-cols-2 lg:px-0">

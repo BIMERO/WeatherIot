@@ -33,16 +33,16 @@ const SignInForm = () => {
 
     startTransition(async () => {
       const result = await signIn(data);
-      const { error } = result;
+      // const { error } = result;
 
-      if (error?.message) {
-        console.log(error.message);
+      if (result?.error) {
+        console.log(result.error);
         toast({
           variant: "destructive",
           title: "You submitted the following values:",
           description: (
             <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              <code className="text-white">{error.message}</code>
+              <code className="text-white">{result.error.message}</code>
             </pre>
           ),
         });

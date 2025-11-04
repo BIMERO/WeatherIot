@@ -31,11 +31,17 @@ export async function registerUser(data: {
 
 export async function signIn(data: { email: string; password: string }) {
   const supabase = await createServerSupabaseClient();
-  const result = await supabase.auth.signInWithPassword({
+  const { data: authData, error } = await supabase.auth.signInWithPassword({
     email: data.email,
     password: data.password,
   });
-  return result;
+  // return result;
+  return {
+    error: error ? { message: error.message } : null,
+    user: authData?.user
+      ? { id: authData.user.id, email: authData.user.email }
+      : null,
+  };
 }
 
 export async function signOut() {
